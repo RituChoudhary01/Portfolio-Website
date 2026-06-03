@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ritu Choudhary — Software Engineer</title>
+<meta name="description" content="Ritu Choudhary — Software Engineer specializing in scalable backend microservices, system design, and full-stack development. IIT (ISM) Dhanbad." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0b; --bg2:#101012; --line:#1f1f22; --line2:#2a2a2e;
+    --fg:#f4f4f5; --muted:#8a8a90; --faint:#5c5c63; --white:#ffffff;
+    --mono:'JetBrains Mono',monospace; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--white);color:var(--bg)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+  .mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(12px);background:rgba(10,10,11,.7);border-bottom:1px solid transparent;transition:border-color .3s}
+  nav.scrolled{border-color:var(--line)}
+  .nav-in{max-width:1100px;margin:0 auto;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:var(--mono);font-weight:500;font-size:1rem;letter-spacing:.02em}
+  .logo span{color:var(--faint)}
+  .nav-links{display:flex;gap:34px}
+  .nav-links a{font-size:.9rem;color:var(--muted);transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--fg)}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--fg);transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{border:1px solid var(--line2);padding:9px 18px;border-radius:100px;font-size:.85rem;color:var(--fg);transition:.2s}
+  .nav-cta:hover{background:var(--fg);color:var(--bg)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* HERO */
+  header{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px}
+  .hero{display:grid;grid-template-columns:1.4fr .8fr;gap:60px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin:22px 0 10px}
+  .hero h1 em{font-style:normal;color:var(--faint)}
+  .hero .role{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--muted);font-weight:400;max-width:560px;margin-bottom:14px}
+  .hero .role b{color:var(--fg);font-weight:600}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 34px}
+  .tag{font-family:var(--mono);font-size:.72rem;padding:6px 12px;border:1px solid var(--line2);border-radius:100px;color:var(--muted)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:13px 26px;border-radius:100px;font-size:.92rem;font-weight:500;transition:.22s;border:1px solid var(--line2);display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--white);color:var(--bg);border-color:var(--white)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,255,255,.25)}
+  .btn-ghost:hover{background:var(--bg2);border-color:var(--faint)}
+  .portrait{position:relative}
+  .portrait img{width:100%;border-radius:18px;filter:grayscale(100%) contrast(1.05);border:1px solid var(--line);display:block}
+  .portrait::after{content:'';position:absolute;inset:0;border-radius:18px;box-shadow:inset 0 0 80px rgba(0,0,0,.5)}
+  .portrait .badge{position:absolute;bottom:-14px;left:-14px;background:var(--bg2);border:1px solid var(--line2);border-radius:12px;padding:12px 16px;font-family:var(--mono);font-size:.74rem;color:var(--fg)}
+  .portrait .badge b{color:var(--white)}
+  @media(max-width:820px){.hero{grid-template-columns:1fr;gap:40px}.portrait{max-width:300px;order:-1}}
+
+  /* SECTIONS */
+  section{padding:100px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:54px}
+  .sec-head .num{font-family:var(--mono);font-size:.8rem;color:var(--faint)}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.02em}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .about p{color:var(--muted);font-size:1.05rem;margin-bottom:18px}
+  .about p b{color:var(--fg);font-weight:600}
+  .facts{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;height:fit-content}
+  .fact{display:flex;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)}
+  .fact:last-child{border-bottom:none}
+  .fact .k{color:var(--faint);font-family:var(--mono);font-size:.78rem}
+  .fact .v{color:var(--fg);font-weight:500;text-align:right}
+  @media(max-width:820px){.about{grid-template-columns:1fr;gap:34px}}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .skill-cat{background:var(--bg);padding:28px}
+  .skill-cat h3{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.86rem;padding:7px 13px;border:1px solid var(--line2);border-radius:8px;color:var(--fg);transition:.2s}
+  .chip:hover{background:var(--white);color:var(--bg);border-color:var(--white)}
+  @media(max-width:720px){.skills-grid{grid-template-columns:1fr}}
+
+  /* PROJECTS */
+  .proj{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:start;padding:34px 0;border-top:1px solid var(--line);transition:.3s;position:relative}
+  .proj:first-of-type{border-top:none}
+  .proj:hover{padding-left:14px}
+  .proj .pnum{font-family:var(--mono);font-size:.85rem;color:var(--faint);padding-top:6px}
+  .proj h3{font-size:1.5rem;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .flag{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;background:var(--white);color:var(--bg);padding:3px 9px;border-radius:5px;font-weight:600}
+  .proj p{color:var(--muted);margin:10px 0 14px;max-width:640px}
+  .stack{display:flex;flex-wrap:wrap;gap:7px}
+  .stack span{font-family:var(--mono);font-size:.7rem;color:var(--faint);border:1px solid var(--line);padding:4px 9px;border-radius:6px}
+  .plinks{display:flex;flex-direction:column;gap:10px;padding-top:6px;min-width:90px}
+  .plink{font-family:var(--mono);font-size:.78rem;color:var(--muted);display:inline-flex;align-items:center;gap:6px;transition:.2s;white-space:nowrap}
+  .plink:hover{color:var(--white)}
+  .plink svg{width:13px;height:13px}
+  @media(max-width:720px){.proj{grid-template-columns:1fr;gap:14px}.plinks{flex-direction:row;gap:22px}}
+
+  /* EXPERIENCE */
+  .exp{border-left:1px solid var(--line2);padding-left:30px;position:relative}
+  .exp::before{content:'';position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--white)}
+  .exp .when{font-family:var(--mono);font-size:.76rem;color:var(--faint)}
+  .exp h3{font-size:1.35rem;font-weight:700;margin:6px 0 2px}
+  .exp .co{color:var(--muted);margin-bottom:16px}
+  .exp ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .exp li{color:var(--muted);padding-left:20px;position:relative;max-width:720px}
+  .exp li::before{content:'—';position:absolute;left:0;color:var(--faint)}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .stat{background:var(--bg);padding:30px 22px;text-align:center}
+  .stat .big{font-size:2.3rem;font-weight:800;letter-spacing:-.02em}
+  .stat .lbl{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* CONTACT */
+  .contact{text-align:center;padding:120px 0}
+  .contact h2{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800;letter-spacing:-.03em;margin-bottom:18px}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto 38px;font-size:1.1rem}
+  .social{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .social a{width:48px;height:48px;border:1px solid var(--line2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.22s;color:var(--muted)}
+  .social a:hover{background:var(--white);color:var(--bg);transform:translateY(-3px)}
+  .social svg{width:20px;height:20px}
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center}
+  footer .mono{font-size:.74rem}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo">ritu<span>.dev</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="./Ritu_Choudhary_Resume.pdf" download class="nav-cta">Resume ↓</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="mono">Software Engineer · Backend &amp; Full-Stack</p>
+        <h1>Ritu<br>Choudhary<em>.</em></h1>
+        <p class="role">I design and build <b>scalable backend microservices</b> and full-stack systems — event-driven architecture with <b>Node.js, Kafka &amp; RabbitMQ</b>, deployed on <b>AWS and rander </b> with Docker.</p>
+        <div class="tags">
+          <span class="tag">Microservices</span>
+          <span class="tag">System Design</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">1500+ DSA</span>
+          <span class="tag">IIT (ISM) Dhanbad</span>
+        </div>
+        <div class="cta-row">
+          <a href="#work" class="btn btn-primary">View my work →</a>
+          <a href="./Ritu_Choudhary_Resume.pdf" download class="btn btn-ghost">Download Resume ↓</a>
+          <a href="https://github.com/RituChoudhary01" target="_blank" class="btn btn-ghost">GitHub</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src="./profile.png" alt="Ritu Choudhary" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23101012'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='130' fill='%235c5c63' `text-anchor='middle' dominant-baseline='central'%3ERC%3C/text%3E%3C/svg%3E&quot;" />
+        <div class="badge">📍 India · <b>Open to work</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">01</span><h2>About</h2></div>
+    <div class="about">
+      <div class="reveal">
+        <p>I'm a <b>Backend Developer at Digident India</b>, where I own the end-to-end design of scalable, production-grade architecture and the full RESTful API layer for live applications.</p>
+        <p>My focus is <b>microservices and system design</b> — decoupled services communicating over <b>Kafka and RabbitMQ</b>, <b>Redis</b> caching, real-time systems with <b>Socket.io</b>, and containerized deployments on <b>AWS</b>. I care about clean architecture, secure APIs, and database/query optimization that measurably improves performance.</p>
+        <p>I hold an <b>M.Sc. in Mathematics &amp; Computing from IIT (ISM) Dhanbad</b> and have solved <b>1500+ DSA problems</b>. I've shipped 30+ full-stack and microservice projects across food delivery, recruitment, real-time chat, and AI SaaS.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><span class="k">Role</span><span class="v">Backend Developer @ Digident India</span></div>
+        <div class="fact"><span class="k">Education</span><span class="v">M.Sc. Maths &amp; Computing,<br>IIT (ISM) Dhanbad</span></div>
+        <div class="fact"><span class="k">Focus</span><span class="v">Microservices · System Design</span></div>
+        <div class="fact"><span class="k">DSA</span><span class="v">1500+ solved</span></div>
+        <div class="fact"><span class="k">Location</span><span class="v">India · Remote / On-site</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">02</span><h2>Skills &amp; Tools</h2></div>
+    <div class="skills-grid reveal">
+      <div class="skill-cat">
+        <h3>Languages</h3>
+        <div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">C++</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>Backend &amp; Architecture</h3>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">Microservices</span><span class="chip">System Design</span><span class="chip">REST APIs</span><span class="chip">Socket.io</span><span class="chip">Apache Kafka</span><span class="chip">RabbitMQ</span><span class="chip">JWT Auth</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>Frontend</h3>
+        <div class="chips"><span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">Redux Toolkit</span><span class="chip">Tailwind CSS</span><span class="chip">HTML5</span><span class="chip">CSS3</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>Databases</h3>
+        <div class="chips"><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Redis</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>Cloud &amp; DevOps</h3>
+        <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Render</span><span class="chip">Vercel</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Postman</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>AI &amp; Integrations</h3>
+        <div class="chips"><span class="chip">Gemini AI</span><span class="chip">OpenAI API</span><span class="chip">Stripe</span><span class="chip">Razorpay</span><span class="chip">Cloudinary</span><span class="chip">Google OAuth</span><span class="chip">Clerk</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">03</span><h2>Selected Work</h2></div>
+
+    <div class="proj reveal">
+      <div class="pnum">01</div>
+      <div>
+        <h3>SwiftBite <span class="flag">FLAGSHIP</span></h3>
+        <p>A real-time food delivery platform on a <b>6-service microservice architecture</b> (Auth · Restaurant · Rider · Realtime · Admin · Utils) — featuring live order tracking, automated rider dispatch, and map navigation.</p>
+        <div class="stack"><span>React</span><span>TypeScript</span><span>Node.js</span><span>RabbitMQ</span><span>Socket.io</span><span>MongoDB</span><span>Razorpay</span><span>Stripe</span><span>Docker</span><span>AWS</span></div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="https://swift-bits.vercel.app" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/SwiftBits" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">02</div>
+      <div>
+        <h3>HireHeaven</h3>
+        <p>A <b>5-service recruitment platform</b> with an <b>AI Career Advisor</b> and <b>ATS Resume Analyzer</b> (Gemini), role-based hiring for jobseekers &amp; recruiters, Razorpay subscriptions, and Kafka-driven email notifications.</p>
+        <div class="stack"><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span><span>Apache Kafka</span><span>Redis</span><span>Gemini AI</span><span>Razorpay</span><span>Docker</span><span>AWS</span></div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="http://3.107.200.104:3000" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/Microservice-Job-Portal" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">03</div>
+      <div>
+        <h3>Chat-App</h3>
+        <p>A <b>3-service real-time chat platform</b> with passwordless <b>OTP login</b>, typing indicators, online presence, seen receipts, and image sharing — emails decoupled via RabbitMQ.</p>
+        <div class="stack"><span>Next.js</span><span>Node.js</span><span>MongoDB</span><span>Socket.io</span><span>RabbitMQ</span><span>Redis</span><span>JWT</span><span>Docker</span></div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="http://13.211.219.171:3000/login" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/Chat-App" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">04</div>
+      <div>
+        <h3>The Reading Retreat</h3>
+        <p>A <b>microservices blogging platform</b> with <b>Gemini AI</b> writing assistance, Redis caching, RabbitMQ cache invalidation, Google OAuth, and a rich-text editor.</p>
+        <div class="stack"><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span><span>Redis</span><span>RabbitMQ</span><span>Gemini AI</span><span>Google OAuth</span></div>
+      </div>
+
+      
+      <div class="plinks">
+        <a class="plink" href="https://microservices-blog-app-jade.vercel.app" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/microservices-blog-app" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">05</div>
+      <div>
+        <h3>Music App</h3>
+        <p>A <b>full-stack music streaming platform</b> built on a <b>3-service microservice architecture</b> (User · Song · Admin) featuring JWT authentication, playlist management, album browsing, Redis caching, Cloudinary media storage, and AWS deployment.</p>
+        <div class="stack">
+          <span>React</span>
+          <span>TypeScript</span>
+          <span>Node.js</span>
+          <span>MongoDB</span>
+          <span>PostgreSQL</span>
+          <span>Redis</span>
+          <span>AWS</span>
+          <span>Cloudinary</span>
+          <span>JWT</span>
+          <span>Express</span>
+        </div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="YOUR_LIVE_DEMO_URL" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/Music-App" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">06</div>
+      <div>
+        <h3>QuickAI</h3>
+        <p>An <b>AI SaaS</b> for automated blog generation, text-to-image synthesis, image object removal, and an AI resume reviewer — with a public community gallery.</p>
+        <div class="stack"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>OpenAI</span><span>Gemini AI</span><span>Clerk</span><span>Cloudinary</span></div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="https://quick-ai-ritu.vercel.app/ai" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/QuickAI" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">07</div>
+      <div>
+        <h3>Forever — E-Commerce</h3>
+        <p>A full e-commerce platform with a customer storefront and an admin dashboard for inventory &amp; orders, with <b>dual Stripe + Razorpay</b> payments.</p>
+        <div class="stack"><span>React</span><span>Node.js</span><span>MongoDB</span><span>Tailwind</span><span>Stripe</span><span>Razorpay</span><span>JWT</span></div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="https://e-commerace-full-stack-ritu.vercel.app" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/ECommeraceFullStack" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="pnum">08</div>
+      <div>
+        <h3>Movie Ticket Booking</h3>
+        <p>A full-stack movie booking platform with a <b>real-time seat-selection</b> system, automated booking engine, secure payments, and a <b>role-based admin panel</b> for managing shows, theatres &amp; ticket sales.</p>
+        <div class="stack"><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Stripe</span><span>Clerk</span><span>JWT</span></div>
+      </div>
+      <div class="plinks">
+        <a class="plink" href="https://full-movie-book-ticket-app-ritu.vercel.app" target="_blank">↗ Live</a>
+        <a class="plink" href="https://github.com/RituChoudhary01/FullMovieBookTicketApp" target="_blank">↗ Code</a>
+      </div>
+    </div>
+
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">04</span><h2>Experience</h2></div>
+    <div class="exp reveal">
+      <p class="when">1 OCT 2025 — PRESENT</p>
+      <h3>Backend Developer</h3>
+      <p class="co">Digident India Pvt. Ltd. · Surat · On-site</p>
+      <ul>
+        <li>Primary Backend Developer owning end-to-end architecture for production-level digital identity &amp; authentication platforms.</li>
+        <li>Designed and built the entire RESTful API layer with a focus on security, scalability, and seamless data flow.</li>
+        <li>Led database schema design and query optimization, significantly improving server response times and data integrity.</li>
+        <li>Architected backend systems with Node.js, Express &amp; TypeScript, backed by PostgreSQL/MongoDB and Redis caching.</li>
+        <li>Integrated third-party services and managed cloud deployments (AWS, Docker) to support product growth.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">05</span><h2>By the Numbers</h2></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="big">1500+</div><div class="lbl">DSA Solved</div></div>
+      <div class="stat"><div class="big">30+</div><div class="lbl">Projects Shipped</div></div>
+      <div class="stat"><div class="big">AIR 540</div><div class="lbl">IIT JAM 2023</div></div>
+      <div class="stat"><div class="big">Top 4%</div><div class="lbl">of 13,333</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="mono reveal">06 — Contact</p>
+    <h2 class="reveal">Let's build something<br>that scales.</h2>
+    <p class="reveal">Open to Software Engineer / Backend Developer roles. Have a project or an opportunity? Let's talk.</p>
+    <div class="cta-row reveal" style="justify-content:center;margin-bottom:18px">
+      <a href="mailto:rituchoudhary0802@gmail.com" class="btn btn-primary">rituchoudhary0802@gmail.com</a>
+      <a href="./Ritu_Choudhary_Resume.pdf" download class="btn btn-ghost">Download Resume ↓</a>
+      <!-- Replace the # below with your Google Drive share link (Anyone with the link → Viewer) -->
+      <!-- <a href="#" target="_blank" class="btn btn-ghost">View Résumé (Drive) ↗</a> -->
+    </div>
+    <div class="social reveal">
+      <a href="https://www.linkedin.com/in/ritu-choudhary-973a50287/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+      <a href="https://github.com/RituChoudhary01" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>
+      <a href="mailto:rituchoudhary0802@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p class="mono">© 2026 Ritu Choudhary · Designed &amp; built with care</p></div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
